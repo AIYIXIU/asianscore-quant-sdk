@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AsianScore Public REST API Documentation</title>
+  <meta name="description" content="Free keyless CORS-enabled JSON REST API for live football & NBA scores, Dixon-Coles xG probabilities, and SHA-256 verifiable prediction ledger." />
+  <style>
+    :root { --bg:#fafaf9; --card:#ffffff; --fg:#18181b; --muted:#52525b; --border:#e4e4e7; --accent:#0f766e; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--fg); line-height:1.6; }
+    main { max-width:900px; margin:0 auto; padding:44px 20px 68px; }
+    .eyebrow { font-size:12px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.04em; }
+    h1 { font-size:30px; margin:6px 0 10px; letter-spacing:-.02em; }
+    .lead { color:var(--muted); margin:0 0 22px; font-size:16px; }
+    .meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .badge { font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px; background:#fff; border:1px solid var(--border); }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:18px; }
+    h2 { font-size:18px; margin:0 0 10px; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); }
+    th { font-size:12px; color:var(--muted); }
+    code { background:#f4f4f5; padding:2px 5px; border-radius:4px; font-size:13px; }
+    pre { background:#18181b; color:#f4f4f5; padding:14px; border-radius:8px; overflow-x:auto; font-size:13px; margin:10px 0 0; }
+    pre code { background:none; padding:0; color:inherit; }
+    a { color:var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">AsianScore Developer Documentation</div>
+    <h1>AsianScore Public Sports Data &amp; xG Ledger REST API</h1>
+    <p class="lead">Free, keyless, HTTPS &amp; CORS-enabled JSON endpoints for real-time Football &amp; NBA scores, Dixon-Coles expected goals (xG), and pre-kickoff SHA-256 verifiable prediction ledger snapshots.</p>
+    <div class="meta">
+      <span class="badge">Base URL: https://asianscore.com</span>
+      <span class="badge">Auth: None (Keyless)</span>
+      <span class="badge">HTTPS: TLS 1.3</span>
+      <span class="badge">CORS: Access-Control-Allow-Origin: *</span>
+    </div>
+    <section class="card">
+      <h2>Endpoints</h2>
+      <table>
+        <thead><tr><th>Method &amp; Path</th><th>Description</th><th>Live Test</th></tr></thead>
+        <tbody>
+          <tr><td><code>GET /api/widget/summary</code></td><td>Compact scoreboard &amp; aggregate ledger calibration stats (locked count, hit rate, avg Brier score)</td><td><a href="https://asianscore.com/api/widget/summary">JSON</a></td></tr>
+          <tr><td><code>GET /api/ledger</code></td><td>Full SHA-256 verifiable prediction ledger (<code>accuracy</code>, <code>byLeague</code>, <code>recentSettled</code>, <code>upcomingLocked</code>)</td><td><a href="https://asianscore.com/api/ledger">JSON</a></td></tr>
+          <tr><td><code>GET /api/scores</code></td><td>Live &amp; upcoming matches across 30+ football leagues &amp; NBA with market odds &amp; predicted scorelines</td><td><a href="https://asianscore.com/api/scores">JSON</a></td></tr>
+          <tr><td><code>GET /api/articles</code></td><td>Pre-match previews and tactical post-match analysis articles</td><td><a href="https://asianscore.com/api/articles">JSON</a></td></tr>
+          <tr><td><code>GET /embed.js</code></td><td>Zero-dependency embeddable scoreboard widget script</td><td><a href="https://asianscore.com/embed.js">JS</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="card">
+      <h2>Quickstart (cURL &amp; Python)</h2>
+      <pre><code>curl -s https://asianscore.com/api/widget/summary | jq '.ledger'</code></pre>
+      <pre><code>pip install asianscore-quant
+python -c "import urllib.request, json; print(json.loads(urllib.request.urlopen('https://asianscore.com/api/ledger').read())['accuracy'])"</code></pre>
+    </section>
+    <section class="card">
+      <h2>Official SDKs, Interactive Tools &amp; Open Data</h2>
+      <ul>
+        <li><a href="https://asianscore.com/">AsianScore Homepage</a> · <a href="https://asianscore.com/scores.html">Live Scoreboard</a> · <a href="https://asianscore.com/models.html">Prediction Ledger</a> · <a href="https://asianscore.com/tools.html">Quant Tools</a></li>
+        <li><a href="https://pypi.org/project/asianscore-quant/">Python SDK (PyPI)</a> · <a href="https://pkg.go.dev/github.com/AIYIXIU/asianscore-go">Go SDK (pkg.go.dev)</a> · <a href="https://rubygems.org/gems/asianscore_quant">Ruby Gem (RubyGems)</a> · <a href="https://www.npmjs.com/package/asianscore-widget">Web Component (npm)</a></li>
+        <li><a href="https://huggingface.co/spaces/asianscore/xg-calibration-explorer">Interactive xG Calibration Explorer (Hugging Face Space)</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.24441036">Zenodo Archive (DOI 10.5281/zenodo.24441036)</a> · <a href="https://huggingface.co/datasets/asianscore/football-nba-xg-prediction-ledger">Hugging Face Dataset</a> · <a href="https://www.kaggle.com/datasets/asianscore/asianscore-football-and-nba-xg-prediction-ledger">Kaggle Dataset</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

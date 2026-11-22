@@ -10,3 +10,4 @@ nav:
   - Overview: index.md
   - API Reference: api.md
   - Verifiable Ledger & Ecosystem: ledger.md
+  - Public REST API: rest-api.md

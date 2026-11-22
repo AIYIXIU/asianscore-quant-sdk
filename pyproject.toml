@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "asianscore-quant"
+version = "1.0.0"
+description = "Zero-dependency sports quantitative analytics SDK: Power/Multiplicative de-vigging, Dixon-Coles xG Poisson grid, Kelly criterion, Brier score auditing, and live AsianScore feed client."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+  { name = "AsianScore Quantitative Research Lab", email = "pypi@aimail.men" }
+]
+keywords = [
+  "sports-analytics",
+  "expected-goals",
+  "xg",
+  "dixon-coles",
+  "poisson",
+  "devig",
+  "kelly-criterion",
+  "brier-score",
+  "football",
+  "asianscore",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://asianscore.com/"
+Documentation = "https://asianscore.com/tools.html"
+"SHA-256 Audit Ledger" = "https://asianscore.com/models.html#ledger"
+"Zenodo Dataset (DOI)" = "https://doi.org/10.5281/zenodo.24441036"
+Repository = "https://github.com/AIYIXIU/asianscore-quant-sdk"
+"Go Package" = "https://pkg.go.dev/github.com/AIYIXIU/asianscore-go"
+
+[tool.setuptools.packages.find]
+where = ["python"]

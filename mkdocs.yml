@@ -1,0 +1,12 @@
+site_name: AsianScore Quant SDK
+site_url: https://asianscore-quant.readthedocs.io/
+site_description: Zero-dependency Python sports quantitative analytics SDK for odds de-vigging, Dixon-Coles xG modeling, Kelly staking, and Brier score auditing.
+repo_url: https://github.com/AIYIXIU/asianscore-quant-sdk
+repo_name: AIYIXIU/asianscore-quant-sdk
+docs_dir: rtd_docs
+theme: readthedocs
+
+nav:
+  - Overview: index.md
+  - API Reference: api.md
+  - Verifiable Ledger & Ecosystem: ledger.md

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AsianScore Quant SDK — Python Sports Probability, Devig & Dixon-Coles Library</title>
+  <meta name="description" content="Zero-dependency Python library for sports odds devigging, fractional Kelly staking, Dixon-Coles Poisson xG modeling, and Brier score auditing powered by AsianScore." />
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f7f7f6; color: #171717; line-height: 1.65; }
+    main { max-width: 780px; margin: 0 auto; padding: 48px 20px 72px; }
+    h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 10px; }
+    .muted { color: #525252; }
+    .nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 28px; }
+    .nav a { padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(23,23,23,0.12); background: #fff; color: #171717; text-decoration: none; font-size: 13px; font-weight: 500; }
+    .nav a.primary { background: #171717; color: #fff; border-color: #171717; }
+    pre { background: #171717; color: #f4f4f5; padding: 16px; border-radius: 10px; overflow-x: auto; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>AsianScore Quant SDK</h1>
+    <p class="muted">Zero-dependency Python toolkit for Power/Multiplicative Odds Devigging, Fractional Kelly Staking, Dixon-Coles Bivariate Poisson xG Probabilities, and Brier Score Evaluation — companion open-source library for <a href="https://asianscore.com/">AsianScore</a>.</p>
+    <nav class="nav">
+      <a class="primary" href="https://asianscore.com/tools.html">Interactive Web Calculators</a>
+      <a href="https://asianscore.com/ai.html">Live SHA-256 xG Ledger</a>
+      <a href="https://asianscore.com/live.html">Live Football &amp; NBA Scores</a>
+      <a href="https://github.com/AIYIXIU/asianscore-quant-sdk">GitHub Repository</a>
+    </nav>
+    <pre><code>from asianscore_quant import devig_power, dixon_coles_probs, kelly_fraction, fetch_live_summary
+
+fair = devig_power([1.95, 3.50, 4.10])
+probs = dixon_coles_probs(lambda_home=1.65, lambda_away=1.05, rho=-0.05)
+stake = kelly_fraction(fair_prob=probs["home"], decimal_odds=1.95, scale=0.25)
+live = fetch_live_summary()  # https://asianscore.com/api/widget/summary</code></pre>
+  </main>
+</body>
+</html>
